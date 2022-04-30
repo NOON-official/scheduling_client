@@ -1,0 +1,9 @@
+.table {
+  margin: 1em;
+  padding: 10px;
+  background-color: aliceblue;
+}
+
+.table-header {
+  background-color: rgb(113, 121, 199);
+}
