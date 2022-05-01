@@ -17,11 +17,11 @@ function Table(props) {
   return (
     <div className="table">
       <h2 className="table-header">{state}</h2>
-      <TaskCard />
+      <TaskCard content="content" detail="detial"/>
       <br />
-      <TaskCard />
+      <TaskCard content="content" detail="detial"/>
       <br />
-      <TaskCard />
+      <TaskCard content="content" detail="detial"/>
     </div>
   );
 }

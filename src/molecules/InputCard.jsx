@@ -12,7 +12,7 @@ const card = (
     <CardContent>
       <TextField
         id="title"
-        label="내용을 입력하세요"
+        label="제목을 입력하세요"
         variant="standard"
       ></TextField>
     </CardContent>
