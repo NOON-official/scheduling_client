@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import TaskCard from "../molecules/TaskCard";
-import InputCard from "../molecules/InputCard";
-import "./style.css";
+import React, { useState } from 'react';
+import TaskCard from '../molecules/TaskCard';
+import InputCard from '../molecules/InputCard';
+import './style.css';
 
 function Table(props) {
   const [state, setState] = useState(props.state);
 
-  if (state == "CREATE") {
+  if (state == 'CREATE') {
     return (
       <div className="table">
         <h2 className="table-header">{state}</h2>
@@ -17,11 +17,11 @@ function Table(props) {
   return (
     <div className="table">
       <h2 className="table-header">{state}</h2>
-      <TaskCard content="content" detail="detial"/>
+      <TaskCard content="content" detail="detial" />
       <br />
-      <TaskCard content="content" detail="detial"/>
+      <TaskCard content="content" detail="detial" />
       <br />
-      <TaskCard content="content" detail="detial"/>
+      <TaskCard content="content" detail="detial" />
     </div>
   );
 }
