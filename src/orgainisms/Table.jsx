@@ -5,6 +5,7 @@ import './style.css';
 
 function Table(props) {
   const [state, setState] = useState(props.state);
+  console.log(props);
 
   if (state == 'CREATE') {
     return (
@@ -17,11 +18,15 @@ function Table(props) {
   return (
     <div className="table">
       <h2 className="table-header">{state}</h2>
-      <TaskCard content="content" detail="detial" />
-      <br />
-      <TaskCard content="content" detail="detial" />
-      <br />
-      <TaskCard content="content" detail="detial" />
+      {props.cards &&
+        props.cards.map((card) => {
+          return (
+            <div>
+              <TaskCard content={card.content} detail={card.detial} />
+              <br />
+            </div>
+          );
+        })}
     </div>
   );
 }
