@@ -4,36 +4,37 @@ import Table from '../../../orgainisms/Table';
 import './style.css';
 
 function App() {
-  const [cards, setCards] = useState({ cards: [] });
-  const [ToDo, setToDo] = useState([]);
-  const [Progress, setProgress] = useState([]);
-  const [Done, setDone] = useState([]);
+  const [cards, setCards] = useState([]);
+  const [ToDo, setToDo] = useState();
+  const [Progress, setProgress] = useState();
+  const [Done, setDone] = useState();
 
   const fetchData = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/card');
-      await setCards(response.data.data.card);
-      await setToDo(cards.filter((value) => value.state == 0));
-      await setProgress(cards.filter((value) => value.state == 1));
-      await setDone(cards.filter((value) => value.state == 2));
-    } catch (error) {
-      console.log(error);
-    }
+    console.log('before', cards);
+    const response = await axios.get('http://localhost:5000/api/card');
+    console.log('response', response);
+    setCards(response.data.data.card);
+    console.log('after', cards);
   };
 
   useEffect(fetchData, []);
-
+  useEffect(() => {
+    if (cards.length > 0) {
+      setToDo(cards.filter((value) => value.state == 0));
+      setProgress(cards.filter((value) => value.state == 1));
+      setDone(cards.filter((value) => value.state == 2));
+    }
+  }, [cards]);
   return (
     <div>
-      <h0>SCHEDULING</h0>
+      <h1>SCHEDULING</h1>
       <div className="table-container">
-        <Table state={'TODO'} cards={ToDo}></Table>
-        <Table state={'PROGRESS'} cards={Progress}></Table>
-        <Table state={'DONE'} cards={Done}></Table>
-        <Table state={'CREATE'}></Table>
+        {ToDo ? <Table state={'TODO'} cards={ToDo}></Table> : 'loading'}
+        {Progress ? <Table state={'PROGRESS'} cards={Progress}></Table> : 'loading'}
+        {Done ? <Table state={'DONE'} cards={Done}></Table> : 'loading'}
+        {<Table state={'CREATE'}></Table>}
       </div>
     </div>
   );
 }
-
 export default App;
