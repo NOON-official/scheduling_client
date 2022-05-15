@@ -10,11 +10,8 @@ function App() {
   const [Done, setDone] = useState();
 
   const fetchData = async () => {
-    console.log('before', cards);
     const response = await axios.get('http://localhost:5000/api/card');
-    console.log('response', response);
     setCards(response.data.data.card);
-    console.log('after', cards);
   };
 
   useEffect(fetchData, []);
@@ -25,6 +22,7 @@ function App() {
       setDone(cards.filter((value) => value.state == 2));
     }
   }, [cards]);
+
   return (
     <div>
       <h1>SCHEDULING</h1>
@@ -37,4 +35,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
