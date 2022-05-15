@@ -2,6 +2,13 @@
   margin: 1em;
   padding: 10px;
   background-color: aliceblue;
+ 
+    overflow: auto;
+    border: 1px solid #444444;
+      width: 33vh;
+      height: 75vh;
+      table-layout: fixed;
+
 }
 
 .table-header {
