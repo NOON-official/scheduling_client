@@ -27,7 +27,16 @@ function InputCard() {
   const submitHandler = (e) => {
     e.preventDefault();
     const body = { content, detail, deadline, state };
-    axios.post('http://localhost:5000/api/card', body);
+    axios
+      .post('http://localhost:5000/api/card', body)
+      .then((res) => {
+        alert('카드 생성 성공 :)');
+        location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('카드 생성 실패 :(');
+      });
   };
 
   return (
