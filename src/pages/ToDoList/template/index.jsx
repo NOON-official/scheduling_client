@@ -17,19 +17,20 @@ function App() {
   useEffect(fetchData, []);
   useEffect(() => {
     if (cards.length > 0) {
-      setToDo(cards.filter((value) => value.state == 0));
-      setProgress(cards.filter((value) => value.state == 1));
-      setDone(cards.filter((value) => value.state == 2));
+      setToDo(cards.filter((value) => value.state == -1));
+      setProgress(cards.filter((value) => value.state == 0));
+      setDone(cards.filter((value) => value.state == 1));
     }
   }, [cards]);
 
+  console.log('cards', cards);
   return (
     <div>
       <h1>SCHEDULING</h1>
       <div className="table-container">
         {ToDo ? <Table state={'TODO'} cards={ToDo}></Table> : <Table loading="loading"></Table>}
-        {Progress ? <Table state={'PROGRESS'} cards={Progress}></Table > :  <Table  loading="loading"></Table>}
-        {Done ? <Table state={'DONE'} cards={Done}></Table> :  <Table  loading="loading"></Table>}
+        {Progress ? <Table state={'PROGRESS'} cards={Progress}></Table> : <Table loading="loading"></Table>}
+        {Done ? <Table state={'DONE'} cards={Done}></Table> : <Table loading="loading"></Table>}
         {<Table state={'CREATE'}></Table>}
       </div>
     </div>

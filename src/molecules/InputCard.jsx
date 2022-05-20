@@ -10,7 +10,7 @@ import DatePicker from '../atoms/DatePicker';
 const card = (
   <Box>
     <CardContent>
-      <TextField id="title" label="제목을 입력하세요" variant="standard"></TextField>
+      <TextField id="content" label="제목을 입력하세요" variant="standard"></TextField>
     </CardContent>
     <CardContent>
       <TextField id="detail" label="상세내용을 입력하세요" variant="standard" multiline="true"></TextField>
