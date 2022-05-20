@@ -1,33 +1,51 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import DatePicker from '../atoms/DatePicker';
 
-const card = (
-  <Box>
-    <CardContent>
-      <TextField id="content" label="제목을 입력하세요" variant="standard"></TextField>
-    </CardContent>
-    <CardContent>
-      <TextField id="detail" label="상세내용을 입력하세요" variant="standard" multiline="true"></TextField>
-    </CardContent>
-    <CardContent>
-      <DatePicker></DatePicker>
-    </CardContent>
-    <CardActions>
-      <Button size="small">make</Button>
-    </CardActions>
-  </Box>
-);
+function InputCard() {
+  const [content, setContent] = useState('');
+  const [detail, setDetail] = useState('');
+  const [deadline, setDeadline] = useState();
+  const [state, setState] = useState(0);
+
+  const contentHandler = (e) => {
+    e.preventDefault();
+    setContent(e.target.value);
+  };
+  const detailHandler = (e) => {
+    e.preventDefault();
+    setDetail(e.target.value);
+  };
+  const deadlineHandler = (e) => {
+    e.preventDefault();
+    setDeadline(e.target.value);
+  };
+  const stateHandler = (e) => {
+    e.preventDefault();
+    setState(e.target.value);
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const body = { content, detail, deadline, state };
+    axios.post('http://localhost:5000/api/card', body);
+  };
+
+  return (
+    <div>
+      <form onSubmit={submitHandler}>
+        <input type="text" value={content} onChange={contentHandler} placeholder="할 일을 적어주세요"></input>
+        <input type="text" value={detail} onChange={detailHandler} placeholder="상세 사항을 적어주세요"></input>
+        <input type="datetime-local" value={deadline} onChange={deadlineHandler} placeholder="할 일을 적어주세요"></input>
+        <br />
+        <label>상태값: </label>
+        <input type="number" min="0" max="2" value={state} onChange={stateHandler}></input>
+        <br />
+        <button type="submit">카드 생성</button>
+      </form>
+    </div>
+  );
+}
 
 export default function OutlinedCard() {
-  return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
-    </Box>
-  );
+  return <Box sx={{ minWidth: 275 }}>{InputCard()}</Box>;
 }

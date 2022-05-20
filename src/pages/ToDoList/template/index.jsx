@@ -17,9 +17,9 @@ function App() {
   useEffect(fetchData, []);
   useEffect(() => {
     if (cards.length > 0) {
-      setToDo(cards.filter((value) => value.state == -1));
-      setProgress(cards.filter((value) => value.state == 0));
-      setDone(cards.filter((value) => value.state == 1));
+      setToDo(cards.filter((value) => value.state == 0));
+      setProgress(cards.filter((value) => value.state == 1));
+      setDone(cards.filter((value) => value.state == 2));
     }
   }, [cards]);
 
