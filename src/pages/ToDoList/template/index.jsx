@@ -23,13 +23,14 @@ function App() {
     }
   }, [cards]);
 
+  console.log('cards', cards);
   return (
     <div>
       <h1>SCHEDULING</h1>
       <div className="table-container">
         {ToDo ? <Table state={'TODO'} cards={ToDo}></Table> : <Table loading="loading"></Table>}
-        {Progress ? <Table state={'PROGRESS'} cards={Progress}></Table > :  <Table  loading="loading"></Table>}
-        {Done ? <Table state={'DONE'} cards={Done}></Table> :  <Table  loading="loading"></Table>}
+        {Progress ? <Table state={'PROGRESS'} cards={Progress}></Table> : <Table loading="loading"></Table>}
+        {Done ? <Table state={'DONE'} cards={Done}></Table> : <Table loading="loading"></Table>}
         {<Table state={'CREATE'}></Table>}
       </div>
     </div>
