@@ -2,15 +2,18 @@
   margin: 1em;
   padding: 10px;
   background-color: aliceblue;
- 
-    overflow: auto;
-    border: 1px solid #444444;
-      width: 33vh;
-      height: 75vh;
-      table-layout: fixed;
 
+  overflow: auto;
+  border: 1px solid #444444;
+  width: 70vh;
+  height: 75vh;
+  table-layout: fixed;
 }
 
 .table-header {
   background-color: rgb(113, 121, 199);
+  width: 20vh;
+  height: 5vh;
+  margin-bottom: 2vh;
+
 }

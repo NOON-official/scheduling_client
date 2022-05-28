@@ -4,13 +4,12 @@ import InputCard from '../molecules/InputCard';
 import './style.css';
 
 function Table(props) {
-  const [state, setState] = useState(props.state);
-  console.log("Table props",props.loading);
 
-  if (state == 'CREATE') {
+ 
+  if (props.state == 'CREATE') {
     return (
       <div className="table">
-        <h2 className="table-header">{state}</h2>
+        <h2 className="table-header">{props.state}</h2>
         <InputCard />
       </div>
     );
@@ -19,21 +18,25 @@ function Table(props) {
    console.log("no item")
    return (
     <div className="table">
-      <h2 className="table-header">{state}</h2>
+      <h2 className="table-header">{props.state}</h2>
       <p>loading</p>
     </div>
   );
  }
  else{
-   console.log("item exist")
+   
    return (
     <div className="table">
-      <h2 className="table-header">{state}</h2>
+     
+      <div className="table-header" >
+         <h2 >{props.state}</h2>
+      </div>
       {props.cards &&
         props.cards.map((card) => {
+          console.log("id",card.id)
           return (
             <div>
-              <TaskCard content={card.content} detail={card.detial} />
+              <TaskCard  id={card.id}content={card.content} detail={card.detial} />
               <br />
             </div>
           );
