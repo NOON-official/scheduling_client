@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
+import './InputCard.css';
 
 function InputCard() {
   const [content, setContent] = useState('');
@@ -31,7 +32,6 @@ function InputCard() {
       .post('http://localhost:5000/api/card', body)
       .then((res) => {
         alert('카드 생성 성공 :)');
-        location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -42,14 +42,16 @@ function InputCard() {
   return (
     <div>
       <form onSubmit={submitHandler}>
-        <input type="text" value={content} onChange={contentHandler} placeholder="할 일을 적어주세요"></input>
-        <input type="text" value={detail} onChange={detailHandler} placeholder="상세 사항을 적어주세요"></input>
-        <input type="datetime-local" value={deadline} onChange={deadlineHandler} placeholder="할 일을 적어주세요"></input>
+        <input type="text" className="input-area" value={content} onChange={contentHandler} placeholder="할 일을 적어주세요"></input>
+        <input type="text" className="input-area" value={detail} onChange={detailHandler} placeholder="상세 사항을 적어주세요"></input>
+        <input type="datetime-local" className="input-area" value={deadline} onChange={deadlineHandler} placeholder="할 일을 적어주세요"></input>
         <br />
         <label>상태값: </label>
-        <input type="number" min="0" max="2" value={state} onChange={stateHandler}></input>
+        <input type="number" min="0" max="2" className="input-area" value={state} onChange={stateHandler}></input>
         <br />
-        <button type="submit">카드 생성</button>
+        <button type="submit" className="submit-area">
+          카드 생성
+        </button>
       </form>
     </div>
   );
