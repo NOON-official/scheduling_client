@@ -1,0 +1,21 @@
+.input-area {
+  justify-content: center;
+}
+
+.input-state-area {
+  padding: 1px;
+}
+
+.submit-area {
+  display: flex;
+  margin: 10;
+  justify-self: self-end;
+}
+
+.input-card-box {
+  background-color: rgb(196, 216, 233);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5%;
+}
