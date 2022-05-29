@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import './InputCard.css';
+import './style.css';
 
 function InputCard() {
   const [content, setContent] = useState('');
@@ -40,23 +39,23 @@ function InputCard() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <input type="text" className="input-area" value={content} onChange={contentHandler} placeholder="할 일을 적어주세요"></input>
-        <input type="text" className="input-area" value={detail} onChange={detailHandler} placeholder="상세 사항을 적어주세요"></input>
-        <input type="datetime-local" className="input-area" value={deadline} onChange={deadlineHandler} placeholder="할 일을 적어주세요"></input>
-        <br />
-        <label>상태값: </label>
-        <input type="number" min="0" max="2" className="input-area" value={state} onChange={stateHandler}></input>
-        <br />
-        <button type="submit" className="submit-area">
-          카드 생성
-        </button>
-      </form>
+    <div className="input-card-box" onSubmit={submitHandler}>
+      <input type="text" className="input-area" value={content} onChange={contentHandler} placeholder="할 일을 적어주세요"></input>
+      <br />
+      <input type="text" className="input-area" value={detail} onChange={detailHandler} placeholder="상세 사항을 적어주세요"></input>
+      <br />
+      <input type="datetime-local" className="input-area" value={deadline} onChange={deadlineHandler} placeholder="할 일을 적어주세요"></input>
+      <br />
+      <label>상태값: </label>
+      <input type="number" min="0" max="2" className="input-state-area" value={state} onChange={stateHandler}></input>
+      <br />
+      <button type="submit" className="submit-area">
+        카드 생성
+      </button>
     </div>
   );
 }
 
 export default function OutlinedCard() {
-  return <Box sx={{ minWidth: 275 }}>{InputCard()}</Box>;
+  return InputCard();
 }
