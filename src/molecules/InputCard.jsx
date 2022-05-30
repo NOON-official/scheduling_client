@@ -26,6 +26,7 @@ function InputCard() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log("submit button")
     const body = { content, detail, deadline, state };
     axios
       .post('http://localhost:5000/api/card', body)

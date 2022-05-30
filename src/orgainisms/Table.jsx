@@ -33,14 +33,15 @@ function Table(props) {
       </div>
       {props.cards &&
         props.cards.map((card) => {
-          console.log("id",card.id)
+          
           return (
             <div>
-              <TaskCard  id={card.id}content={card.content} detail={card.detial} />
+              <TaskCard  key={card.id} state= {card.state} id={card.id}content={card.content} detail={card.detial} />
               <br />
             </div>
           );
-        })}
+        })
+        }
     </div>
   );
  }
