@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import { useState, useCallback } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import axios from "axios";
 import Typography from '@mui/material/Typography';
 
 function card(props) {
+ 
   return (
     <React.Fragment>
       <CardContent>
@@ -17,7 +19,14 @@ function card(props) {
         <Typography variant="body2">{props.detail}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">상태 변경</Button>
+       <button onClick={(e)=>{
+         axios.delete(`http://localhost:5000/api/card/${props.id}`).
+         then((response)=>{
+  console.log("success")
+  location.reload()
+}).catch(()=>{console.log("fail")})
+
+       }}>상태변경</button>
       </CardActions>
     </React.Fragment>
   );
