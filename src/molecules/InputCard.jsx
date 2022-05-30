@@ -26,7 +26,7 @@ function InputCard() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submit button")
+    console.log('submit button');
     const body = { content, detail, deadline, state };
     axios
       .post('http://localhost:5000/api/card', body)
@@ -40,7 +40,7 @@ function InputCard() {
   };
 
   return (
-    <div className="input-card-box" onSubmit={submitHandler}>
+    <form className="input-card-box" onSubmit={submitHandler}>
       <input type="text" className="input-area" value={content} onChange={contentHandler} placeholder="할 일을 적어주세요"></input>
       <br />
       <input type="text" className="input-area" value={detail} onChange={detailHandler} placeholder="상세 사항을 적어주세요"></input>
@@ -53,7 +53,7 @@ function InputCard() {
       <button type="submit" className="submit-area">
         카드 생성
       </button>
-    </div>
+    </form>
   );
 }
 
